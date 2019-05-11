@@ -1,6 +1,6 @@
 export const initialState = {
-    tradingPairs: [],
+    tradingPairList: [],
     errorMessage: '',
 }
 
-export const getTradingPairs = (state) => state.tradingPairs ? state.tradingPairs : initialState.tradingPairs
+export const getTradingPairs = (state) => state.trades.tradingPairList ? state.trades.tradingPairList : initialState.tradingPairList

@@ -8,10 +8,10 @@ function* getTradingPairs () {
 function* getTradingPairsFlow () {
     const pairs = yield call(getTradingPairs)
     if (pairs) {
-        put({type: GET_TRADING_PAIRS_SUCCESS, data: pairs})
+        yield put({type: GET_TRADING_PAIRS_SUCCESS, data: pairs})
     }
 }
 
 export default function* () {
-    takeEvery(GET_TRADING_PAIRS_LIST, getTradingPairsFlow)
+    yield takeEvery(GET_TRADING_PAIRS_LIST, getTradingPairsFlow)
 }
