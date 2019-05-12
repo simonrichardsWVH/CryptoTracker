@@ -1385,13 +1385,13 @@ big-integer@^1.6.7:
   resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.43.tgz#8ac15bf13e93e509500859061233e19d8d0d99d1"
   integrity sha512-9dULc9jsKmXl0Aeunug8wbF+58n+hQoFjqClN7WeZwGLh0XJUWyJJ9Ee+Ep+Ql/J9fRsTVaeThp8MhiCCrY0Jg==
 
-binance-api-node@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/binance-api-node/-/binance-api-node-0.9.1.tgz#a3ec591c12e4bc34cc4dd50f78cb7ce38c12ec7c"
-  integrity sha512-c/QtsRzI9hyBdUlmLF2wyvSRLExwCAV4VIrEJmJb2UJjbnEP8x4GD4pgGepfE20Y5rztd1UOtLA7Yh8i+N8xfg==
+binance-api-react-native@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/binance-api-react-native/-/binance-api-react-native-0.1.5.tgz#af990f0a54d16ce6d584b8e04ec5015039bb0160"
+  integrity sha512-TyFguqvLKNW4L+F/6AJkY7c59rzv2ltVCdugnWEQHz1hRbDoIrFujt1HS/OKh2qRKgU/Yts9cH5fNaiQ2jKz3A==
   dependencies:
+    crypto-js "^3.1.9-1"
     html5-websocket "^2.0.2"
-    isomorphic-fetch "^2.2.1"
     lodash.zipobject "^4.1.3"
     reconnecting-websocket "^3.2.2"
 
@@ -1806,6 +1806,11 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     semver "^5.5.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
+
+crypto-js@^3.1.9-1:
+  version "3.1.9-1"
+  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-3.1.9-1.tgz#fda19e761fc077e01ffbfdc6e9fdfc59e8806cd8"
+  integrity sha1-/aGedh/Ad+Af+/3G6f38WeiAbNg=
 
 cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   version "0.3.6"
@@ -3226,7 +3231,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
+isomorphic-fetch@^2.1.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   integrity sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=

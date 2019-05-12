@@ -6,7 +6,6 @@ import actions from 'store/actions'
 
 class HomeScreen extends React.Component {
     componentDidMount() {
-        this.props.updateStackTotal(1)
         this.props.getTradingPairs()
     }
 

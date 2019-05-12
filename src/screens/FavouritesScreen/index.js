@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 class FavouritesScreen extends React.Component {
     componentDidMount() {
-        this.props.updateStackTotal(1)
+        this.props.getFavourites(['ETHBTC', 'LTCBTC', 'BNBBTC', 'NEOBTC'])
     }
 
     componentWillUnmount() {
@@ -17,7 +17,7 @@ class FavouritesScreen extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    updateStackTotal: (difference) => dispatch(actions.stackActions.updateStackTotal(difference)),
+    getFavourites: (favourites) => dispatch(actions.tradingActions.getFavouritePairs(favourites)),
 })
 
 export default connect(

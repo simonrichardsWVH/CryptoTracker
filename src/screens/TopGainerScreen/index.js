@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 
 class TopGainerScreen extends React.Component {
     componentDidMount() {
-        this.props.updateStackTotal(1)
+
     }
 
     componentWillUnmount() {
-        this.props.updateStackTotal(-1)
+
     }
 
     render() {
@@ -17,7 +17,7 @@ class TopGainerScreen extends React.Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-    updateStackTotal: (difference) => dispatch(actions.stackActions.updateStackTotal(difference)),
+    //updateStackTotal: (difference) => dispatch(actions.stackActions.updateStackTotal(difference)),
 })
 
 export default connect(
