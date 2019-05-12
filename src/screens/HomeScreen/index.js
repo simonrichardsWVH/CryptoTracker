@@ -6,7 +6,12 @@ import actions from 'store/actions'
 
 class HomeScreen extends React.Component {
     componentDidMount() {
+        this.props.updateStackTotal(1)
         this.props.getTradingPairs()
+    }
+
+    componentWillUnmount() {
+        this.props.updateStackTotal(-1)
     }
 
     render() {
@@ -27,6 +32,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     getTradingPairs: () => dispatch(actions.tradingActions.getTradingPairs()),
+    updateStackTotal: (difference) => dispatch(actions.stackActions.updateStackTotal(difference))
 })
 
 export default connect(

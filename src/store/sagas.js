@@ -1,8 +1,10 @@
 import { all, fork } from 'redux-saga/effects'
 import tradingPairs from './trading_pairs/sagas'
+import stack from './stack_count/sagas'
 
 const rootSaga = [
-    tradingPairs
+    tradingPairs,
+    stack
 ]
 
 export default function*() {

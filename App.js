@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Provider } from 'react-redux'
 import store from 'store'
-import { HomeScreen } from 'screens'
+import RootNavigator from 'navigators/AppContainer'
 
-class App extends Component {
-    render() {
-        return (
-            <Provider store={store}>
-                <HomeScreen />
-            </Provider>
-        )
-    }
+const App = () => {
+    return (
+        <Provider store={store}>
+            <RootNavigator />
+        </Provider>
+    )
 }
 
 export default App
