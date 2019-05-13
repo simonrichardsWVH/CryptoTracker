@@ -1,11 +1,25 @@
 import { takeEvery, call, put } from 'redux-saga/effects'
-import Binance from 'binance-api-react-native'
+import api from 'services/api'
+import Config from 'react-native-config'
 import { GET_TRADING_PAIRS_LIST, GET_FAVOURITE_PAIRS_LIST, GET_TRADING_PAIRS_LIST_SUCCESS, GET_FAVOURITE_PAIRS_LIST_SUCCESS } from './constants'
 
-const client = Binance()
+let secureApi = {}
+if(api) {
+    secureApi = api.create()
+}
+secureApi.setApiKey()
 
 function* getTradingPairsList() {
-    return yield client.dailyStats()
+    console.log('Config: ', Config)
+    try {
+        return yield call(
+            [secureApi, secureApi.get],
+            '/v1/cryptocurrency/listings/latest?start=1&limit=50&convert=USD'
+        )
+    } catch (error) {
+        console.log('ERROR IN API CALL', error)
+        return false
+    }
 }
 
 function* getFavouritePairsList({ symbols }) {
@@ -20,7 +34,7 @@ function* getFavouritePairsList({ symbols }) {
 function* getTradingPairsListFlow() {
     const data = yield call(getTradingPairsList)
     if (data) {
-        console.log('FAVOURITES LIST: ', data)
+        console.log('TRADING LIST: ', data)
         yield put({type: GET_TRADING_PAIRS_LIST_SUCCESS, data})
     }
 }
@@ -28,7 +42,7 @@ function* getTradingPairsListFlow() {
 function* getFavouritePairsListFlow(action) {
     const data = yield call(getFavouritePairsList, action)
     if (data) {
-        console.log('TRADING LIST: ', data)
+        console.log('FAVOURITES LIST: ', data)
         yield put({type: GET_FAVOURITE_PAIRS_LIST_SUCCESS, data})
     }
 }
