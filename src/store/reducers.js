@@ -1,9 +1,9 @@
 import { combineReducers } from "redux"
-import trades from './trading_pairs/reducer'
+import cryptocurrencies from './cryptocurrencies/reducer'
 import stack from './stack_count/reducer'
 
 export default combineReducers({
-    trades,
+    cryptocurrencies,
     stack
 })
 

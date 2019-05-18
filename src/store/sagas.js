@@ -1,5 +1,5 @@
 import { all, fork } from 'redux-saga/effects'
-import tradingPairs from './trading_pairs/sagas'
+import tradingPairs from './cryptocurrencies/sagas'
 import stack from './stack_count/sagas'
 
 const rootSaga = [

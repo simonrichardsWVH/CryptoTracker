@@ -1,0 +1,5 @@
+export const GET_CRYPTO_LIST = 'get_crypto_list'
+export const GET_CRYPTO_LIST_SUCCESS = 'get_crypto_list_success'
+export const GET_FAVORITES_LIST = 'get_favorites_list'
+export const GET_FAVORITES_LIST_SUCCESS = 'get_favorites_list_success'
+export const CLEAR_CRYPTO_LIST = 'clear_crypto_list'
