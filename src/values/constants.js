@@ -5,3 +5,4 @@ export const List = {
     END_REACHED_THRESHOLD: 0.5,
 }
 export const BASE_CURRENCY = 'EUR'
+export const NUM_DECIMAL_PLACES = 3

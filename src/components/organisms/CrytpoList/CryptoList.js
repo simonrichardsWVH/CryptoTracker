@@ -2,7 +2,7 @@ import React from 'react'
 import { FlatList, Text, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { ApiConfig, List } from 'values/constants'
-import { CryptoListItem } from 'components'
+import { CryptoListItem, ListSeparator } from 'components'
 
 class CryptoList extends React.PureComponent {
     static propTypes = {
@@ -69,7 +69,7 @@ class CryptoList extends React.PureComponent {
                 data={cryptoList}
                 renderItem={this.renderItem}
                 keyExtractor={this.keyExtractor}
-                //ItemSeparatorComponent={<View style={{height: 1, flex: 1, color: '#000'}}/>}
+                ItemSeparatorComponent={ListSeparator}
                 onRefresh={this.handleRefresh}
                 refreshing={isRefreshing}
                 onEndReached={!cryptoListEndReached && !isLoading && this.handleLazyLoad}

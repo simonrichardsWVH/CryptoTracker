@@ -1,14 +1,11 @@
 import React from 'react'
 import { CryptoList } from 'components'
+import styles from './HomeScreenStyle'
 
-
-class HomeScreen extends React.Component {
-
-    render() {
-        return (
-            <CryptoList />
-        )
-    }
+const HomeScreen = () => {
+    return (
+        <CryptoList/>
+    )
 }
 
 export default HomeScreen
