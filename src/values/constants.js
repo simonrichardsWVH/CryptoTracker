@@ -4,3 +4,4 @@ export const ApiConfig = {
 export const List = {
     END_REACHED_THRESHOLD: 0.5,
 }
+export const BASE_CURRENCY = 'EUR'
