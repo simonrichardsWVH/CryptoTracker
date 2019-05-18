@@ -19,7 +19,6 @@ function* getCryptoList({ offset, limit }) {
     try {
         return yield call(
             [secureApi, secureApi.get],
-            //'/v1/cryptocurrency/quotes/latest?symbol=BTC,ETH,XRP,BCH,EOS,LTC,XLM&convert=EUR'
             `/v1/cryptocurrency/listings/latest?start=${offset}&limit=${limit}&convert=EUR`
         )
     } catch (error) {
@@ -29,12 +28,16 @@ function* getCryptoList({ offset, limit }) {
 }
 
 function* getFavoritePairsList({ symbols }) {
-    const data = []
-    for (let i = 0; i < symbols.length; i++) {
-        //const tradePair = yield client.dailyStats({ symbol: symbols[i] })
-        //data.push(tradePair)
+    // symbols = 'BTC,ETH,XRP,BCH,EOS,LTC,XLM' (for example)
+    try {
+        return yield call(
+            [secureApi, secureApi.get],
+            `/v1/cryptocurrency/quotes/latest?symbol=${symbols}&convert=EUR`
+        )
+    } catch (error) {
+        console.log('ERROR IN API CALL', error)
+        return false
     }
-    return data
 }
 
 function* getCryptoListFlow({params}) {

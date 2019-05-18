@@ -2,6 +2,7 @@ import React from 'react'
 import { FlatList, Text, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { ApiConfig, List } from 'values/constants'
+import ValueIndicator from '../../atoms/ValueIndicator/ValueIndicator'
 
 class CryptoList extends React.PureComponent {
     static propTypes = {
@@ -54,7 +55,12 @@ class CryptoList extends React.PureComponent {
             offset: prevState.offset + prevState.limit,
         }))
     }
-    renderItem = ({item}) => <Text>{item.name}</Text>
+    renderItem = ({ item }) => (
+        <View style={{flexDirection: 'row'}}>
+            <Text>{item.name}</Text>
+            <ValueIndicator label='1h' value={item.quote.EUR.percent_change_1h} />
+        </View>
+    )
 
     keyExtractor = (item, index) => item.id.toString()
 

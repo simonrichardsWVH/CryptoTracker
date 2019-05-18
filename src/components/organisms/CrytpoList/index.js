@@ -1,3 +1,1 @@
-import CryptoListContainer from './CryptoListContainer'
-
-export default CryptoListContainer
+export default from './CryptoListContainer'

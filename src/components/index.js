@@ -1,4 +1,5 @@
 // atoms
+export ValueIndicator from './atoms/ValueIndicator'
 
 // molecules
 
