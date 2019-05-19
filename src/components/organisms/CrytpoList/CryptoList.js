@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Text, View } from 'react-native'
+import { FlatList, Text, ActivityIndicator, View } from 'react-native'
 import PropTypes from 'prop-types'
 import { ApiConfig, List } from 'values/constants'
 import { CryptoListItem, ListSeparator } from 'components'
@@ -62,8 +62,12 @@ class CryptoList extends React.PureComponent {
     render() {
         const { cryptoList, isLoading, cryptoListEndReached } = this.props
         const { isRefreshing } = this.state
-        //console.log('CRYPTO LIST: ', cryptoList)
-        if (isLoading && cryptoList.length < 0) return <ActivityIndicator/>
+        if (isLoading && cryptoList.length < 1)
+            return (
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <ActivityIndicator size="large" />
+                </View>
+            )
         return (
             <FlatList
                 data={cryptoList}
@@ -74,9 +78,7 @@ class CryptoList extends React.PureComponent {
                 refreshing={isRefreshing}
                 onEndReached={!cryptoListEndReached && !isLoading && this.handleLazyLoad}
                 onEndReachedThreshold={List.END_REACHED_THRESHOLD}
-                ListEmptyComponent={
-                    !isLoading && <Text>Nothing To Show!</Text>
-                }
+                ListEmptyComponent={!isLoading && <Text>Nothing To Show!</Text>}
             />
         )
     }

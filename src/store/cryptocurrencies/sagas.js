@@ -46,6 +46,7 @@ function* getCryptoListFlow({ params }) {
     const results = yield call(getCryptoList, params)
     if (results) {
         const cryptoList = results.data
+        console.log('CRYPTO LIST: ', cryptoList)
         if (cryptoList.length > 0) {
             yield put({ type: CRYPTO_GET_LIST_SUCCESS, data: cryptoList })
         } else {

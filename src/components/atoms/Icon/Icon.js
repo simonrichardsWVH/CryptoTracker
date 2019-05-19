@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, TouchableWithoutFeedback } from 'react-native'
+import { View, TouchableWithoutFeedback, TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { createIconSetFromIcoMoon } from 'react-native-vector-icons'
 import icoMoonConfig from 'resources/fonts/selection.json'
@@ -8,19 +8,32 @@ const CustomIcon = createIconSetFromIcoMoon(icoMoonConfig)
 
 const Icon = props => {
 
-    const { name, size, color, headerLeft, headerRight, onPress } = props
+    const { name, size, color, headerLeft, headerRight, onPress, noFeedback } = props
 
-    return (
-        <TouchableWithoutFeedback onPress={onPress} disabled={!onPress}>
-            <View style={{ marginLeft: headerLeft ? 16 : 0, marginRight: headerRight ? 16 : 0 }}>
-                <CustomIcon
-                    name={name}
-                    size={size}
-                    color={color}
-                />
-            </View>
-        </TouchableWithoutFeedback>
-    )
+    return noFeedback ?
+        (
+            <TouchableWithoutFeedback onPress={onPress} disabled={!onPress}>
+                <View style={{ marginLeft: headerLeft ? 16 : 0, marginRight: headerRight ? 16 : 0 }}>
+                    <CustomIcon
+                        name={name}
+                        size={size}
+                        color={color}
+                    />
+                </View>
+            </TouchableWithoutFeedback>
+        )
+        :
+        (
+            <TouchableOpacity onPress={onPress} disabled={!onPress}>
+                <View style={{ marginLeft: headerLeft ? 16 : 0, marginRight: headerRight ? 16 : 0 }}>
+                    <CustomIcon
+                        name={name}
+                        size={size}
+                        color={color}
+                    />
+                </View>
+            </TouchableOpacity>
+        )
 }
 
 Icon.propTypes = {

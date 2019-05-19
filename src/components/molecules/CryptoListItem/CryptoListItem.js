@@ -1,12 +1,13 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { ValueIndicator, Icon } from 'components'
+import { ValueIndicator, ActionIconFavorite } from 'components'
 import styles from './CryptoListItemStyle'
 import * as constants from 'values/constants'
 
 const CryptoListItem = props => {
     const {
         data: {
+            id,
             name,
             symbol,
             quote: {
@@ -18,7 +19,6 @@ const CryptoListItem = props => {
         <View style={styles.mainContainer}>
             <View style={styles.titleAndPriceContainer}>
                 <View style={styles.cryptoTitleContainer}>
-                    <Icon name="heart" />
                     <Text style={styles.symbolText}>{symbol}</Text>
                     <View style={styles.separator}/>
                     <Text>{name}</Text>
@@ -27,6 +27,7 @@ const CryptoListItem = props => {
                     <Text style={styles.priceText}>{price.toFixed(2)}€</Text>
                 </View>
             </View>
+            <ActionIconFavorite id={id} />
             <View style={styles.valueGroupContainer}>
                 <View style={styles.valueContainer}>
                     <ValueIndicator label="1h" value={percent_change_1h}/>
