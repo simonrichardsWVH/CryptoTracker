@@ -3,3 +3,9 @@ export const valueIndicator = {
     negativeValue: '#ff0000',
     positiveValue: '#3ccf48'
 }
+export const listSeparator = {
+    color: '#bbb',
+}
+export const cryptoListItem = {
+
+}

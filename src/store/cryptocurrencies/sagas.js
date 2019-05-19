@@ -1,11 +1,11 @@
 import { takeEvery, call, put } from 'redux-saga/effects'
 import api from 'services/api'
-import Config from 'react-native-config'
+import * as constants from 'values/constants'
 import {
-    GET_CRYPTO_LIST,
+    CRYPTO_GET_LIST,
     GET_FAVORITES_LIST,
-    GET_CRYPTO_LIST_SUCCESS,
-    GET_FAVORITES_LIST_SUCCESS,
+    CRYPTO_GET_LIST_SUCCESS,
+    GET_FAVORITES_LIST_SUCCESS, CRYPTO_GET_LIST_LOADING, CRYPTO_LIST_END_REACHED, CRYPTO_GET_LIST_ERROR,
 } from './constants'
 
 let secureApi = {}
@@ -15,14 +15,16 @@ if (api) {
 secureApi.setApiKey()
 
 function* getCryptoList({ offset, limit }) {
+    yield put({ type: CRYPTO_GET_LIST_LOADING, data: true })
     console.log('offset and limit: ', offset, limit)
     try {
         return yield call(
             [secureApi, secureApi.get],
-            `/v1/cryptocurrency/listings/latest?start=${offset}&limit=${limit}&convert=EUR`
+            `/v1/cryptocurrency/listings/latest?start=${offset}&limit=${limit}&convert=${constants.BASE_CURRENCY}`
         )
     } catch (error) {
         console.log('ERROR IN API CALL', error)
+        yield put({ type: CRYPTO_GET_LIST_ERROR, data: error.message })
         return false
     }
 }
@@ -40,11 +42,15 @@ function* getFavoritePairsList({ symbols }) {
     }
 }
 
-function* getCryptoListFlow({params}) {
+function* getCryptoListFlow({ params }) {
     const results = yield call(getCryptoList, params)
     if (results) {
-        console.log('RESULTS IN SAGE: ', results)
-        yield put({ type: GET_CRYPTO_LIST_SUCCESS, data: results.data })
+        const cryptoList = results.data
+        if (cryptoList.length > 0) {
+            yield put({ type: CRYPTO_GET_LIST_SUCCESS, data: cryptoList })
+        } else {
+            yield put({ type: CRYPTO_LIST_END_REACHED, data: true })
+        }
     }
 }
 
@@ -57,6 +63,6 @@ function* getFavoritePairsListFlow(action) {
 }
 
 export default function*() {
-    yield takeEvery(GET_CRYPTO_LIST, getCryptoListFlow)
+    yield takeEvery(CRYPTO_GET_LIST, getCryptoListFlow)
     yield takeEvery(GET_FAVORITES_LIST, getFavoritePairsListFlow)
 }

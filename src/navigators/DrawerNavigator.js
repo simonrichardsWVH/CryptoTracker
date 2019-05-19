@@ -1,16 +1,15 @@
 import React from 'react'
+import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native'
 import { createDrawerNavigator, createStackNavigator } from 'react-navigation'
 import { HomeScreen, FavouritesScreen, TopGainerScreen } from 'screens'
-import { Button } from 'react-native'
+import { Icon } from 'components'
 
 const homeScreen = createStackNavigator({
     Home: {
         screen: HomeScreen,
         navigationOptions: ({ navigation }) => ({
             title: 'Screen 1',
-            headerLeft: (
-                <Button onPress={navigation.toggleDrawer} title='Menu'/>
-            ),
+            headerLeft: <Icon name="menu" headerLeft onPress={navigation.toggleDrawer} />,
         }),
     },
 })
@@ -20,9 +19,7 @@ const favouritesScreen = createStackNavigator({
         screen: FavouritesScreen,
         navigationOptions: ({ navigation }) => ({
             title: 'Screen 2',
-            headerLeft: (
-                <Button onPress={navigation.toggleDrawer} title='Menu'/>
-            ),
+            headerLeft: <Icon name="menu" headerLeft onPress={navigation.toggleDrawer} />,
         }),
     },
 })
@@ -32,9 +29,7 @@ const topGainerScreen = createStackNavigator({
         screen: TopGainerScreen,
         navigationOptions: ({ navigation }) => ({
             title: 'Screen 3',
-            headerLeft: (
-                <Button onPress={navigation.toggleDrawer} title='Menu'/>
-            ),
+            headerLeft: <Icon name="menu" headerLeft onPress={navigation.toggleDrawer} />,
         }),
     },
 })

@@ -63,7 +63,7 @@ class CryptoList extends React.PureComponent {
         const { cryptoList, isLoading, cryptoListEndReached } = this.props
         const { isRefreshing } = this.state
         //console.log('CRYPTO LIST: ', cryptoList)
-        if (isLoading && cryptoList.length === 0) return <ActivityIndicator/>
+        if (isLoading && cryptoList.length < 0) return <ActivityIndicator/>
         return (
             <FlatList
                 data={cryptoList}

@@ -8,9 +8,9 @@ const CryptoListContainer = props => <CryptoList {...props} />
 
 const mapStateToProps = state => ({
     cryptoList: selectors.cryptoSelectors.getCryptoList(state),
-    isLoading: false, //(screenConfig.feed && screenConfig.feed.isLoading) || false,
-    cryptoListEndReached: false //(screenConfig.feed && screenConfig.feed.listEndReached) || false,
-    //errorMessage: selectors.feed.getErrorMessage(state),
+    isLoading: selectors.cryptoSelectors.isLoading(state),
+    errorMessage: selectors.cryptoSelectors.getErrorMessage(state),
+    cryptoListEndReached: selectors.cryptoSelectors.cryptoListEndReached(state),
 })
 
 const mapDispatchToProps = dispatch => ({
